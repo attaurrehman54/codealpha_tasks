@@ -1,1 +1,63 @@
-Image_Gallery Project
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="gallery-container">
+        <!-- Main Heading -->
+        <h2>Image Gallery</h2>
+        
+        <!-- Filter Buttons Menu -->
+        <div class="filter-menu">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="landscape">Landscape</button>
+            <button class="filter-btn" data-filter="water">Water</button>
+            <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+        </div>
+        
+        <!-- Image Grid Container -->
+        <div class="gallery">
+            <!-- Each item has a data-category for the filter logic -->
+            <div class="gallery-item" data-category="landscape">
+                <img src="https://picsum.photos/id/1015/600/400" alt="Mountain Landscape">
+            </div>
+            <div class="gallery-item" data-category="landscape">
+                <img src="https://picsum.photos/id/1018/600/400" alt="Nature Trail">
+            </div>
+            <div class="gallery-item" data-category="water">
+                <img src="https://picsum.photos/id/1019/600/400" alt="Ocean View">
+            </div>
+            <div class="gallery-item" data-category="landscape">
+                <img src="https://picsum.photos/id/1016/600/400" alt="Canyon">
+            </div>
+            <div class="gallery-item" data-category="wildlife">
+                <img src="https://picsum.photos/id/1020/600/400" alt="Wildlife">
+            </div>
+            <div class="gallery-item" data-category="wildlife">
+                <img src="https://picsum.photos/id/1024/600/400" alt="Bird">
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal (Hidden by default) -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <button class="nav-btn prev-btn">&#10094;</button>
+        
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Expanded Image">
+        </div>
+        
+        <button class="nav-btn next-btn">&#10095;</button>
+    </div>
+
+    <!-- Link to JavaScript file -->
+    <script src="script.js"></script>
+
+</body>
+</html>
