@@ -1,0 +1,223 @@
+/* Base Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9fafb;
+    padding: 40px 20px;
+    color: #333;
+}
+
+/* Main Container */
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+/* ========================================= */
+/* --- Filter Menu Styles --- */
+/* ========================================= */
+.filter-menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    background-color: #e5e7eb;
+    color: #333;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover and Active states for smooth transitions */
+.filter-btn:hover, 
+.filter-btn.active {
+    background-color: #333;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Utility class to hide filtered images */
+.gallery-item.hide {
+    display: none;
+}
+
+/* ========================================= */
+/* --- The Grid Layout & Hover Effects --- */
+/* ========================================= */
+.gallery {
+    display: grid;
+    /* Responsive Grid: Auto-fits columns based on available width */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; 
+}
+
+/* Individual Image Cards */
+.gallery-item {
+    border-radius: 10px;
+    overflow: hidden; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    aspect-ratio: 3 / 2; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* Lift effect on card hover */
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); 
+}
+
+/* Images inside the cards */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.25, 0.45, 0.45, 0.95), filter 0.3s ease;
+}
+
+/* Zoom and filter effect on image hover */
+.gallery-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.85); 
+    cursor: pointer;
+}
+
+/* ========================================= */
+/* --- Lightbox Styles --- */
+/* ========================================= */
+.lightbox {
+    display: flex;
+    opacity: 0;
+    visibility: hidden; 
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); 
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* Active state toggled via JavaScript */
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    max-width: 80%;
+    max-height: 80vh;
+    transform: scale(0.8);
+    transition: transform 0.4s ease-out;
+}
+
+.lightbox.active .lightbox-content {
+    transform: scale(1);
+}
+
+#lightbox-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+/* Lightbox Navigation Buttons */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #bbb;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    color: #bbb;
+}
+
+.prev-btn { left: 5%; }
+.next-btn { right: 5%; }
+
+/* ========================================= */
+/* --- Mobile Responsiveness (Media Query) --- */
+/* ========================================= */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px; 
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .gallery {
+        gap: 12px;
+        /* Allow 2 smaller columns on mobile devices */
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+    }
+
+    .lightbox-content {
+        max-width: 95%; 
+        max-height: 70vh;
+    }
+
+    .nav-btn {
+        font-size: 30px; 
+        padding: 10px;
+    }
+    
+    .prev-btn { left: 2%; }
+    .next-btn { right: 2%; }
+
+    .close-btn {
+        top: 10px;
+        right: 15px;
+        font-size: 35px;
+    }
+}
